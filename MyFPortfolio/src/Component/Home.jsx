@@ -17,6 +17,7 @@ function Home() {
 
   return (
     <>
+    {/* This is Home page */}
       <div className="home-container">
         <video className="background-video" autoPlay loop muted>
           <source src={videoBg} type="video/mp4" />
@@ -58,6 +59,10 @@ function Home() {
         </button>
 
       </div>
+      {/* this is about page */}
+      
+                
+
 
 
     </>

@@ -60,13 +60,13 @@ function Header() {
         <Link className="nav-link" to="/about">About</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/about">Services</Link>
+        <Link className="nav-link" to="/services">Services</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/about">Blogs</Link>
+        <Link className="nav-link" to="/blogs">Blogs</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/about">My CV </Link>
+        <Link className="nav-link" to="/cv">My CV </Link>
       </li>
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Contact </a>
