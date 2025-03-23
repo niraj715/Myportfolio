@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
+import musicBg from "../assets/bgmusic.mp3";
 import Home from './Home'
 import About from './About'
+import Skill from './Skill';
 
 function Header() {
   $(window).scroll(() => {
@@ -13,6 +15,16 @@ function Header() {
         $('.fixed').fadeOut();  // Hide sticky header
     }
 });
+ const [isMuted, setIsMuted] = useState(true); // State to manage mute/unmute
+  const audioRef = useRef(null); // Reference to audio element
+
+  // Toggle Mute Function
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    if (audioRef.current) {
+      audioRef.current.muted = !isMuted;
+    }
+  };
   return (
     <>
     <header>
@@ -27,13 +39,13 @@ function Header() {
         <Link className="nav-link" to="/about">About</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/about">Services</Link>
+        <Link className="nav-link" to="/skill">Skills</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/about">Blogs</Link>
+        <Link className="nav-link" to="/blog">Blogs</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/about">My CV </Link>
+        <Link className="nav-link" to="/cv">My CV </Link>
       </li>
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Contact </a>
@@ -60,7 +72,7 @@ function Header() {
         <Link className="nav-link" to="/about">About</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/services">Services</Link>
+        <Link className="nav-link" to="/skill">Skills</Link>
       </li>
       <li className="nav-item">
         <Link className="nav-link" to="/blogs">Blogs</Link>
@@ -82,11 +94,16 @@ function Header() {
     
   </nav>
   </div>
+   <audio ref={audioRef} src={musicBg} autoPlay loop muted />
+  <button className="mute-button" onClick={toggleMute}>
+          {isMuted ? "Sound 🔊" : "Mute 🔇"}
+        </button>
 
 
    <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/about' element={<About/>}/>
+    <Route path='/skill' element={<Skill/>}/>
    </Routes>
    </header>
     </>
